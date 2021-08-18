@@ -504,34 +504,34 @@ namespace newland {
    * @param ssid SSID; eg: ssid
    * @param pass PASSWORD; eg: password
    */
-  //% blockId=newland_join_ap block="Join Ap %ssid %pass"
+/*  //% blockId=newland_join_ap block="Join Ap %ssid %pass"
   //% group="Wifi" weight=50
   export function newland_join_ap(ssid: string, pass: string) {
     serial.writeLine(`K50 ${ssid} ${pass}`)
-  }
+  }*/
 
-  //% blockId=newland_getip block="Wifi Get IP"
+/*  //% blockId=newland_getip block="Wifi Get IP"
   //% group="Wifi" weight=49
   export function newland_get_ip() {
     // serial.writeLine(`K54`)
     let str = `K54`
     asyncWrite(str, 54)
-  }
+  }*/
 
-  //% blockId=newland_ip_onread block="on IP Data"
+/*  //% blockId=newland_ip_onread block="on IP Data"
   //% group="Wifi" weight=48 draggableParameters=reporter
   export function newland_ip_onread(
     handler: (ip: string) => void
   ) {
     ipEvt = handler
-  }
+  }*/
 
-  //% blockId=newland_gettime block="Newland get time"
+/*  //% blockId=newland_gettime block="Newland get time"
   //% group="Wifi" weight=47
   export function newland_gettime(): Array<string> {
     asyncWrite(`K56`, 56)
     return lastCmd
-  }
+  }*/
 
   /**
    * @param host Mqtt host; eg: iot.kittenbot.cn
@@ -540,7 +540,7 @@ namespace newland {
    * @param user Username; eg: user
    * @param pass Password; eg: pass
    */
-  //% blockId=newland_mqtt_host block="Mqtt Host %host| clientID%cid||Port%port User%user Pass%pass"
+/*  //% blockId=newland_mqtt_host block="Mqtt Host %host| clientID%cid||Port%port User%user Pass%pass"
   //% group="Wifi" weight=46
   export function newland_mqtt_host(
     host: string,
@@ -554,31 +554,35 @@ namespace newland {
     } else {
       serial.writeLine(`K51 ${host} ${cid} ${port}`)
     }
-  }
+  }*/
 
   /**
    * @param topic Topic to subscribe; eg: /topic
    */
+/*
   //% blockId=newland_mqtt_sub block="Mqtt Subscribe %topic"
   //% group="Wifi" weight=45
   export function newland_mqtt_sub(topic: string) {
     serial.writeLine(`K52 ${topic}`)
   }
+*/
 
   /**
    * @param topic Topic to publish; eg: /topic
    * @param data Data to publish; eg: hello
    */
+/*
   //% blockId=newland_mqtt_pub block="Mqtt Publish %topic %data"
   //% group="Wifi" weight=44
   export function newland_mqtt_pub(topic: string, data: string) {
     serial.writeLine(`K53 ${topic} ${data}`)
   }
+*/
 
   /**
    * @param topic Mqtt Read; eg: /topic
    */
-  //% blockId=newland_mqtt_read block="Mqtt Read %topic"
+/*  //% blockId=newland_mqtt_read block="Mqtt Read %topic"
   //% group="Wifi" weight=43
   export function newland_mqtt_read(topic: string) {
     topic = topic || ''
@@ -586,15 +590,15 @@ namespace newland {
     serial.writeLine(str)
     // asyncWrite(str, 55)
 
-  }
+  }*/
 
-  //% blockId=newland_mqtt_onread block="on Mqtt Data"
+/*  //% blockId=newland_mqtt_onread block="on Mqtt Data"
   //% group="Wifi" weight=42 draggableParameters=reporter
   export function newland_mqtt_onread(
     handler: (data: string, topic: string) => void
   ) {
     mqttDataEvt = handler
-  }
+  }*/
 
 
   /**
