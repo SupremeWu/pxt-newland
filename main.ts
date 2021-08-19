@@ -285,22 +285,22 @@ namespace newland {
     serial.writeLine(str)
   }
 
-  //% blockId=newland_reset_cls block="Newland Reset Classifier"
+  /*//% blockId=newland_reset_cls block="Newland Reset Classifier"
   //% group="Classifier" weight=90
   export function newland_reset_cls(): void {
     let str = `K40`
     serial.writeLine(str)
-  }
+  }*/
 
   /**
    * @param tag tag index; eg: cat
    */
-  //% blockId=newland_addtag block="Newland Add Tag %tag"
+  /*//% blockId=newland_addtag block="Newland Add Tag %tag"
   //% group="Classifier" weight=89
   export function newland_addtag(tag: string): void {
     let str = `K41 ${tag}`
     serial.writeLine(str)
-  }
+  }*/
 
   //% blockId=newland_run block="Newland Run Classifer"
   //% group="Classifier" weight=88
@@ -319,22 +319,22 @@ namespace newland {
   /**
    * @param path json to save; eg: class.json
    */
-  //% blockId=newland_cls_save block="Newland Save Classifier %path"
+  /*//% blockId=newland_cls_save block="Newland Save Classifier %path"
   //% group="Classifier" weight=86
   export function newland_cls_save(path: string): void {
     let str = `K43 ${path}`
     serial.writeLine(str)
-  }
+  }*/
 
   /**
    * @param path json to save; eg: class.json
    */
-  //% blockId=newland_cls_load block="Newland Load Classifier %path"
+  /*//% blockId=newland_cls_load block="Newland Load Classifier %path"
   //% group="Classifier" weight=85
   export function newland_cls_load(path: string): void {
     let str = `K44 ${path}`
     serial.writeLine(str)
-  }
+  }*/
 
 
   /**
@@ -377,12 +377,12 @@ namespace newland {
   /**
    * @param key color key; eg: red
    */
-  //% blockId=newland_colorcali block="Newland color calibration %key"
+  /*//% blockId=newland_colorcali block="Newland color calibration %key"
   //% group="Graphic" weight=76
   export function newland_colorcali(key: string) {
     let str = `K16 ${key}`
     serial.writeLine(str)
-  }
+  }*/
 
   /**
    * @param key color key; eg: red
@@ -420,18 +420,18 @@ namespace newland {
     colorblobEvt = handler
   }
 
-  //% blockId=newland_qrcode block="Newland QR code"
+  /*//% blockId=newland_qrcode block="Newland QR code"
   //% group="Tag/Code" weight=70
   export function newland_qrcode() {
     let str = `K20`
     serial.writeLine(str)
-  }
+  }*/
 
-  //% blockId=newland_onqrcode block="on QR code"
+  /*//% blockId=newland_onqrcode block="on QR code"
   //% group="Tag/Code" weight=69 draggableParameters=reporter blockGap=40
   export function newland_onqrcode(handler: (link: string) => void) {
     qrcodeEvt = handler
-  }
+  }*/
 
   //% blockId=newland_barcode block="Newland BAR code"
   //% group="Tag/Code" weight=68
@@ -477,15 +477,16 @@ namespace newland {
     serial.writeLine(str)
   }
 
-  //% blockId=newland_facedetect block="Newland face detect"
+  /*//% blockId=newland_facedetect block="Newland face detect"
   //% group="Face" weight=59
   export function newland_facedetect() {
     let str = `K31`
     // serial.writeLine(str)
     // basic.pause(200)
     asyncWrite(str, 31)
-  }
+  }*/
 
+  //改为识别数字卡片
   //% blockId=newland_facecount block="Newland face number"
   //% group="Face" weight=57 blockGap=40
   export function newland_facecount(): number {
@@ -604,89 +605,89 @@ namespace newland {
   /**
    * @param file Wav File to record; eg: say.wav
    */
-  //% blockId=newland_audio_rec block="WAV Rec %file"
+  /*//% blockId=newland_audio_rec block="WAV Rec %file"
   //% group="Audio" weight=40
   export function newland_audio_rec(file: string) {
     serial.writeLine(`K61 ${file}`)
-  }
+  }*/
 
   /**
    * @param file Wav File to play; eg: say.wav
    */
-  //% blockId=newland_audio_play block="WAV Play %file"
+  /*//% blockId=newland_audio_play block="WAV Play %file"
   //% group="Audio" weight=39
   export function newland_audio_play(file: string) {
     serial.writeLine(`K62 ${file}`)
-  }
+  }*/
 
-  //% blockId=newland_audio_noisetap block="Calibrate noise"
+  /*//% blockId=newland_audio_noisetap block="Calibrate noise"
   //% group="Audio" weight=38
   export function newland_audio_noisetap(): void {
     serial.writeLine(`K63`)
-  }
+  }*/
 
   /**
    * @param classid Speech Cmd add; eg: cmd
    */
-  //% blockId=newland_speechcmd_addmodel block="Speech Cmd add %classid"
+  /*//% blockId=newland_speechcmd_addmodel block="Speech Cmd add %classid"
   //% group="Audio" weight=37
   export function newland_speechcmd_addmodel(classid: string) {
     serial.writeLine(`K64 ${classid}`)
-  }
+  }*/
 
-  //% blockId=newland_speechcmd_listen block="Speech Cmd Listen"
+  /*//% blockId=newland_speechcmd_listen block="Speech Cmd Listen"
   //% group="Audio" weight=36
   export function newland_speechcmd_listen(): void {
     let str = `K65`
     serial.writeLine('K65')
     // asyncWrite(str, 65)
-  }
+  }*/
 
-  //% blockId=newland_speechcmd_onrecognize block="on Speech Cmd"
+  /*//% blockId=newland_speechcmd_onrecognize block="on Speech Cmd"
   //% group="Audio" weight=35 draggableParameters=reporter
   export function newland_speechcmd_onrecognize(
     handler: (classId: string) => void
   ) {
     speechCmdEvt = handler
-  }
+  }*/
 
   /**
    * @param path json to save; eg: cmd.json
    */
-  //% blockId=newland_speechcmd_save block="Newland Save speech cmd %path"
+  /*//% blockId=newland_speechcmd_save block="Newland Save speech cmd %path"
   //% group="Audio" weight=34
   export function newland_speechcmd_save(path: string): void {
     let str = `K66 ${path}`
     serial.writeLine(str)
-  }
+  }*/
 
   /**
    * @param path json to save; eg: cmd.json
    */
-  //% blockId=newland_speechcmd_load block="Newland Load speech cmd %path"
+  /*//% blockId=newland_speechcmd_load block="Newland Load speech cmd %path"
   //% group="Audio" weight=33 blockGap=40
   export function newland_speechcmd_load(path: string): void {
     let str = `K67 ${path}`
     serial.writeLine(str)
-  }
+  }*/
 
-  //% blockId=newland_cloud_facerecognize block="Newland Cloud Face Recognize"
+  /*//% blockId=newland_cloud_facerecognize block="Newland Cloud Face Recognize"
   //% group="CloudAI" weight=30
   export function newland_cloud_facerecognize() {
     let str = `K75`
     serial.writeLine(`K75`)
     // asyncWrite(str, 75)
-  }
+  }*/
 
-  //% blockId=newland_cloud_onregface block="on Recognize Face"
+  /*//% blockId=newland_cloud_onregface block="on Recognize Face"
   //% group="CloudAI" weight=29 draggableParameters=reporter
   export function newland_cloud_onregface(
     handler: (token: string, sex: string, age: number, mask: number, expression: string) => void
   ) {
     facetokenEvt = handler
-  }
+  }*/
 
-  //% blockId=newland_cloud_faceaddgroup block="add face token %TOKEN to Group %GROUP with name %NAME"
+  /*//% blockId=newland_cloud_faceaddgroup block="add face token %TOKEN to Group %GROUP with name %NAME"
   //% group="CloudAI" weight=28
   export function newland_cloud_faceaddgroup(
     TOKEN: string,
@@ -694,49 +695,49 @@ namespace newland {
     NAME: string
   ) {
     serial.writeLine(`K76 ${TOKEN} ${GROUP} ${NAME}`)
-  }
+  }*/
 
-  //% blockId=newland_cloud_facesearch block="search face token %TOKEN in group %GROUP"
+  /*//% blockId=newland_cloud_facesearch block="search face token %TOKEN in group %GROUP"
   //% group="CloudAI" weight=27
   export function newland_cloud_facesearch(TOKEN: string, GROUP: string) {
     let str =`K77 ${TOKEN} ${GROUP}`
     serial.writeLine(str)
     // asyncWrite(str, 77)
-  }
+  }*/
 
-  //% blockId=newland_cloud_onfindface block="on Find Face"
+ /* //% blockId=newland_cloud_onfindface block="on Find Face"
   //% group="CloudAI" weight=26 draggableParameters=reporter blockGap=40
   export function newland_cloud_onfindface(
     handler: (name: string, confidence: number) => void
   ) {
     facefoundEvt = handler
-  }
+  }*/
 
   /**
    * @param TXT text to speech; eg: hello world
    */
-  //% blockId=newland_cloud_tts block="TTS %TXT"
+  /*//% blockId=newland_cloud_tts block="TTS %TXT"
   //% group="CloudAI" weight=25
   export function newland_cloud_tts(TXT: string) {
     let str = TXT.split(' ').join('.')
     serial.writeLine(`K78 ${str}`)
-  }
+  }*/
 
 
-  //% blockId=newland_reset block="Newland reset"
+  /*//% blockId=newland_reset block="Newland reset"
   //% group="Basic" weight=10
   //% advanced=true
   export function newland_reset(): void {
     serial.writeLine(`K99`)
-  }
+  }*/
 
-  //% blockId=newland_stop_kpu block="Newland Stop kpu"
+  /*//% blockId=newland_stop_kpu block="Newland Stop kpu"
   //% group="Basic" weight=9 blockGap=40
   //% advanced=true
   export function newland_stop_kpu(): void {
     let str = `K98`
     serial.writeLine(str)
-  }
+  }*/
 
   // /**
   //  * @param txt string to display; eg: 你好世界
@@ -767,29 +768,29 @@ namespace newland {
   /**
    * @param path kmodel to load; eg: model.kmodel
    */
-  //% blockId=newland_loadkmodel block="Load KNN model %path"
+  /*//% blockId=newland_loadkmodel block="Load KNN model %path"
   //% group="Classifier" weight=90
   //% advanced=true
   export function newland_loadkmodel(path: string) {
     let str = `K45 ${path}`
     serial.writeLine(str)
-  }
+  }*/
 
-  //% blockId=newland_inference block="KNN inference"
+  /*//% blockId=newland_inference block="KNN inference"
   //% group="Classifier" weight=89
   //% advanced=true
   export function newland_inference() {
     let str = `K46`
     serial.writeLine(`K46`)
     // asyncWrite(str, 46)
-  }
+  }*/
 
-  //% blockId=newland_on_inference block="on Inference"
+  /*//% blockId=newland_on_inference block="on Inference"
   //% group="Classifier" weight=88 draggableParameters=reporter blockGap=40
   //% advanced=true
   export function newland_on_inference(handler: (index: number) => void) {
     kmodelEvt = handler
-  }
+  }*/
 
 }
 
