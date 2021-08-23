@@ -385,12 +385,12 @@ namespace newland {
   }*/
 
   /**
-   * @param key color key; eg: red
+   * @param th threshold; eg: 2000
    */
-  //% blockId=newland_track_line block="Newland track line %key"
+  //% blockId=newland_track_line block="Newland track line %th"
   //% group="Graphic" weight=75
-  export function newland_track_line(key: string): void {
-    let str = `K12 ${key}`
+  export function newland_track_line(th: number): void {
+    let str = `K12 ${th}`
     serial.writeLine(str)
   }
 
@@ -403,11 +403,12 @@ namespace newland {
   }
 
   /**
-   * @param key color key; eg: red
+   * @param key color key; eg: 0
+   * 0-red,1-green,2-blue
    */
   //% blockId=newland_track_colorblob block="Newland track color blob %key"
   //% group="Graphic" weight=73
-  export function newland_track_colorblob(key: string): void {
+  export function newland_track_colorblob(key: number): void {
     let str = `K15 ${key}`
     serial.writeLine(str)
   }
