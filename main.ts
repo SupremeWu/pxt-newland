@@ -7,7 +7,7 @@ load dependency
 //% color="#5c7cfa" weight=10 icon="\uf16b"
 //% groups='["Basic", "Graphic", Classifier", "Tag/Code", "Audio", "Face", "Wifi", "CloudAI"]'
 namespace newland {
-  //type起个新类型
+  //type起个新类型 
   type EvtAct = () => void
   type EvtNum = (num: number) => void
   type Evtxy = (x: number, y: number) => void
