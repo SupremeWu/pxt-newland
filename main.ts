@@ -380,19 +380,19 @@ namespace newland {
   /**
    * @param key color key; eg: red
    */
-  /*//% blockId=newland_colorcali block="Newland color calibration %key"
+  //% blockId=newland_colorcali block="Newland color calibration %key"
   //% group="Graphic" weight=76
   export function newland_colorcali(key: string) {
     let str = `K16 ${key}`
     serial.writeLine(str)
-  }*/
+  }
 
   /**
    * @param th threshold; eg: 2000
    */
   //% blockId=newland_track_line block="Newland track line %th"
   //% group="Graphic" weight=75
-  export function newland_track_line(th: number): void {
+  export function newland_track_line(th: string): void {
     let str = `K12 ${th}`
     serial.writeLine(str)
   }
@@ -406,12 +406,12 @@ namespace newland {
   }
 
   /**
-   * @param key color key; eg: 0
+   * @param key color key; eg: red
    * 0-red,1-green,2-blue
    */
   //% blockId=newland_track_colorblob block="Newland track color blob %key"
   //% group="Graphic" weight=73
-  export function newland_track_colorblob(key: number): void {
+  export function newland_track_colorblob(key: string): void {
     let str = `K15 ${key}`
     serial.writeLine(str)
   }
@@ -481,16 +481,16 @@ namespace newland {
     serial.writeLine(str)
   }
 
-  /*//% blockId=newland_facedetect block="Newland face detect"
+  //% blockId=newland_facedetect block="Newland face detect"
   //% group="Face" weight=59
   export function newland_facedetect() {
     let str = `K31`
     // serial.writeLine(str)
     // basic.pause(200)
     asyncWrite(str, 31)
-  }*/
+  }
 
-  //改为识别数字卡片
+  //改为人脸数量
   //% blockId=newland_facecount block="Newland face number"
   //% group="Face" weight=57 blockGap=40
   export function newland_facecount(): number {
