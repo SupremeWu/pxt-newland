@@ -30,6 +30,14 @@
     "newland.newland_facedetect|block": "人臉追蹤",
     "newland.newland_facecount|block": "人臉數量",
     "newland.newland_onfindface|block": "人臉",
+
+    "newland.newland_loadobjectdetection|block": "加載目標檢測模型",
+    "newland.newland_detection|block": "目標檢測",
+    "newland.newland_detectionname|block": "目標名稱和位置",
+    "newland.newland_loaddigitalrecognition|block": "加載數字識別模型",
+    "newland.newland_digitalrecognition|block": "數字識別",
+    "newland.newland_digitalid|block": "卡片數字值",
+
     "newland.newland_join_ap|block": "加入區域網 %ssid %pass",
     "newland.newland_get_ip|block": "獲取IP",
     "newland.newland_ip_onread|block": "當收到IP",

@@ -5,13 +5,15 @@ load dependency
 */
 
 //% color="#5c7cfa" weight=10 icon="\uf16b"
-//% groups='["Basic", "Graphic", Classifier", "Tag/Code", "Audio", "Face", "Wifi", "CloudAI"]'
+//% groups='["Basic", "Graphic", Classifier", "Tag/Code", "Audio", "Face", "Wifi", "CloudAI", "AI"]'
 namespace newland {
-  //type起个新类型 
+  //type起个新类型
   type EvtAct = () => void
   type EvtNum = (num: number) => void
+  type EvtCardNum = (num: number) => void
   type Evtxye = (x: number, y: number, e: number) => void
   type Evtxy = (x: number, y: number) => void
+  type Evtxyobj = (x: number, y: number) => void
   type Evtxywh = (x: number, y: number, w: number, h: number) => void
   type Evtxyr = (x: number, y: number, r: number) => void
   type Evtpp = (x1: number, y1: number, x2: number, y2: number) => void
@@ -48,6 +50,8 @@ namespace newland {
   let barcodeEvt: Evttxt = null
   let apriltagEvt: Evtsxy = null
   let facedetEvt: Evtxy = null
+  let objectdetEvt: Evtxyobj = null
+  let carddetEvt: EvtCardNum = null
   let ipEvt: Evttxt = null
   let mqttDataEvt: Evtss = null
 
@@ -178,6 +182,10 @@ namespace newland {
       } else if (cmd == 32) {
         // face number
         faceNum = parseInt(b[1])
+      } else if (cmd == 51) {
+        if (objectdetEvt && b[1]) {
+          objectdetEvt(parseInt(b[1]), parseInt(b[2]))
+        }
       } else if (cmd == 54) {
         // ip
         if (ipEvt) {
@@ -186,6 +194,10 @@ namespace newland {
       } else if (cmd == 55) {
         if (mqttDataEvt) {
           mqttDataEvt(b[1], b[2])
+        }
+      } else if (cmd == 61) {
+        if (carddetEvt && b[1]) {
+          carddetEvt(parseInt(b[1]))
         }
       } else if (cmd == 65) {
         if (speechCmdEvt) {
@@ -503,6 +515,51 @@ namespace newland {
   //% group="Face" weight=58 draggableParameters=reporter blockGap=40
   export function newland_onfindface(handler: (x: number, y: number) => void) {
     facedetEvt = handler
+  }
+
+  //% blockId=newland_loadobjectdetection block="Newland Load Object detectio"
+  //% group="AI" weight=53
+  export function newland_loadObjectDetection() {
+    let str = `K50`
+    serial.writeLine(str)
+  }
+
+  //% blockId=newland_detection block="Newland object detectio"
+  //% group="AI" weight=52
+  export function newland_detection() {
+    let str = `K51`
+    // serial.writeLine(str)
+    // basic.pause(200)
+    asyncWrite(str, 51)
+  }
+
+  //% blockId=newland_detectionname block="on detectio Name"
+  //% group="AI" weight=51 draggableParameters=reporter blockGap=40
+  export function newland_detectionname(handler: (x: number, y: number) => void) {
+    objectdetEvt = handler
+  }
+
+
+  //% blockId=newland_loaddigitalrecognition block="Newland  load digital recognition detectio"
+  //% group="AI" weight=63
+  export function newland_loaddigitalrecognition() {
+    let str = `K60`
+    serial.writeLine(str)
+  }
+
+  //% blockId=newland_digitalrecognition block="Newland digital recognition"
+  //% group="AI" weight=62
+  export function newland_digitalrecognition() {
+    let str = `K61`
+    // serial.writeLine(str)
+    // basic.pause(200)
+    asyncWrite(str, 61)
+  }
+
+  //% blockId=newland_digitalid block="newland digitalid Value"
+  //% group="AI" weight=61 draggableParameters=reporter blockGap=40
+  export function newland_digitalid(handler: (x: number) => void) {
+    carddetEvt = handler
   }
 
   /**
