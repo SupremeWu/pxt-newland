@@ -3,7 +3,6 @@
 
 pxt-newland
 
-
  ![](newland.png)
 ## Use as Extension
 
