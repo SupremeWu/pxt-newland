@@ -10,20 +10,21 @@ namespace newland {
   //type起个新类型
   type EvtAct = () => void
   type EvtNum = (num: number) => void
+  type Evtxye = (x: number, y: number, e: number) => void
   type Evtxy = (x: number, y: number) => void
   type Evtxywh = (x: number, y: number, w: number, h: number) => void
   type Evtxyr = (x: number, y: number, r: number) => void
   type Evtpp = (x1: number, y1: number, x2: number, y2: number) => void
   type Evttxt = (txt: string) => void
   type Evtsxy = (
-    id: string,
-    x: number,
-    y: number,
-    w: number,
-    h: number,
-    rX: number,
-    rY: number,
-    rZ: number
+      id: string,
+      x: number,
+      y: number,
+      w: number,
+      h: number,
+      rX: number,
+      rY: number,
+      rZ: number
   ) => void
   type Evtss = (t1: string, t2: string) => void
   type Evtsn = (t1: string, n: number) => void
@@ -35,7 +36,9 @@ namespace newland {
   let facetokenEvt: Evtssnns = null
   let facefoundEvt: Evtsn = null
 
-  let btnEvt: Evtxy = null
+
+
+  let btnEvt: Evtxye = null
   let circleEvt: Evtxyr = null
   let rectEvt: Evtxywh = null
   let colorblobEvt: Evtxywh = null
@@ -96,7 +99,7 @@ namespace newland {
         }
       } else if (cmd == 3) {
         if (btnEvt) {
-          btnEvt(parseInt(b[1]), parseInt(b[2])) // btna btnb
+          btnEvt(parseInt(b[1]), parseInt(b[2]), parseInt(b[3])) // btna btnb
         }
       } else if (cmd == 10) {
         // circle position
@@ -107,40 +110,40 @@ namespace newland {
         // rect return
         if (rectEvt) {
           rectEvt(
-            parseInt(b[1]),
-            parseInt(b[2]),
-            parseInt(b[3]),
-            parseInt(b[4])
+              parseInt(b[1]),
+              parseInt(b[2]),
+              parseInt(b[3]),
+              parseInt(b[4])
           ) // x y w h
         }
       } else if (cmd == 12) {
         // line track
         if (lineEvt) {
           lineEvt(
-            parseInt(b[1]),
-            parseInt(b[2]),
-            parseInt(b[3]),
-            parseInt(b[4])
+              parseInt(b[1]),
+              parseInt(b[2]),
+              parseInt(b[3]),
+              parseInt(b[4])
           )
         }
       } else if (cmd == 15) {
         // color blob
         if (colorblobEvt) {
           colorblobEvt(
-            parseInt(b[1]),
-            parseInt(b[2]),
-            parseInt(b[3]),
-            parseInt(b[4])
+              parseInt(b[1]),
+              parseInt(b[2]),
+              parseInt(b[3]),
+              parseInt(b[4])
           )
         }
       } else if (cmd == 17) {
         // image track return
         if (imgtrackEvt) {
           imgtrackEvt(
-            parseInt(b[1]),
-            parseInt(b[2]),
-            parseInt(b[3]),
-            parseInt(b[4])
+              parseInt(b[1]),
+              parseInt(b[2]),
+              parseInt(b[3]),
+              parseInt(b[4])
           )
         }
       } else if (cmd == 20) {
@@ -157,14 +160,14 @@ namespace newland {
         // april tag return
         if (apriltagEvt) {
           apriltagEvt(
-            b[1],
-            parseInt(b[2]),
-            parseInt(b[3]),
-            parseInt(b[4]),
-            parseInt(b[5]),
-            Math.roundWithPrecision(parseFloat(b[6]), 2),
-            Math.roundWithPrecision(parseFloat(b[7]), 2),
-            Math.roundWithPrecision(parseFloat(b[8]), 2)
+              b[1],
+              parseInt(b[2]),
+              parseInt(b[3]),
+              parseInt(b[4]),
+              parseInt(b[5]),
+              Math.roundWithPrecision(parseFloat(b[6]), 2),
+              Math.roundWithPrecision(parseFloat(b[7]), 2),
+              Math.roundWithPrecision(parseFloat(b[8]), 2)
           )
         }
       } else if (cmd == 31) {
@@ -200,7 +203,7 @@ namespace newland {
       } else {
         lastCmd = b.slice(1); // deep copy?
       }
-      control.raiseEvent(EventBusSource.MES_BROADCAST_GENERAL_ID, 0x8900+cmd)
+      control.raiseEvent(EventBusSource.MES_BROADCAST_GENERAL_ID, 0x8900 + cmd)
     }
   })
 
@@ -251,7 +254,7 @@ namespace newland {
   //% x.min=0 x.max=240
   //% y.min=0 y.max=240
   //% group="Basic" weight=97
-  export function newland_print(t: string, x: number,y: number, d:number=1000): void {
+  export function newland_print(t: string, x: number, y: number, d: number = 1000): void {
     let str = `K4 ${x} ${y} ${d} ${t}`
     serial.writeLine(str)
   }
@@ -260,7 +263,7 @@ namespace newland {
   //% weight=96
   //% group="Basic" draggableParameters=reporter
   export function newland_onbtn(
-    handler: (btnA: number, btnB: number) => void
+      handler: (btnA: number, btnB: number, btnEnter: number) => void
   ): void {
     btnEvt = handler
   }
@@ -351,7 +354,7 @@ namespace newland {
   //% blockId=newland_oncircletrack block="on Find Circle"
   //% group="Graphic" weight=79 draggableParameters=reporter blockGap=40
   export function newland_oncircletrack(
-    handler: (x: number, y: number, r: number) => void
+      handler: (x: number, y: number, r: number) => void
   ) {
     circleEvt = handler
   }
@@ -369,7 +372,7 @@ namespace newland {
   //% blockId=newland_onrecttrack block="on Find Rectangle"
   //% group="Graphic" weight=77 draggableParameters=reporter blockGap=40
   export function newland_onrecttrack(
-    handler: (x: number, y: number, w: number, h: number) => void
+      handler: (x: number, y: number, w: number, h: number) => void
   ) {
     rectEvt = handler
   }
@@ -397,7 +400,7 @@ namespace newland {
   //% blockId=newland_onlinetrack block="on Line Update"
   //% group="Graphic" weight=74 draggableParameters=reporter
   export function newland_onlinetrack(
-    handler: (x1: number, y1: number, x2: number, y2: number) => void
+      handler: (x1: number, y1: number, x2: number, y2: number) => void
   ) {
     lineEvt = handler
   }
@@ -416,7 +419,7 @@ namespace newland {
   //% blockId=newland_oncolorblob block="on Color blob"
   //% group="Graphic" weight=72 draggableParameters=reporter blockGap=40
   export function newland_oncolorblob(
-    handler: (x: number, y: number, w: number, h: number) => void
+      handler: (x: number, y: number, w: number, h: number) => void
   ) {
     colorblobEvt = handler
   }
@@ -457,16 +460,16 @@ namespace newland {
   //% blockId=newland_onapriltag block="on AprilTag"
   //% group="Tag/Code" weight=65 draggableParameters=reporter blockGap=40
   export function newland_onapriltag(
-    handler: (
-      id: string,
-      x: number,
-      y: number,
-      w: number,
-      h: number,
-      tX: number,
-      tY: number,
-      tZ: number
-    ) => void
+      handler: (
+          id: string,
+          x: number,
+          y: number,
+          w: number,
+          h: number,
+          tX: number,
+          tY: number,
+          tZ: number
+      ) => void
   ) {
     apriltagEvt = handler
   }
@@ -506,34 +509,34 @@ namespace newland {
    * @param ssid SSID; eg: ssid
    * @param pass PASSWORD; eg: password
    */
-/*  //% blockId=newland_join_ap block="Join Ap %ssid %pass"
-  //% group="Wifi" weight=50
-  export function newland_join_ap(ssid: string, pass: string) {
-    serial.writeLine(`K50 ${ssid} ${pass}`)
-  }*/
+  /*  //% blockId=newland_join_ap block="Join Ap %ssid %pass"
+    //% group="Wifi" weight=50
+    export function newland_join_ap(ssid: string, pass: string) {
+      serial.writeLine(`K50 ${ssid} ${pass}`)
+    }*/
 
-/*  //% blockId=newland_getip block="Wifi Get IP"
-  //% group="Wifi" weight=49
-  export function newland_get_ip() {
-    // serial.writeLine(`K54`)
-    let str = `K54`
-    asyncWrite(str, 54)
-  }*/
+  /*  //% blockId=newland_getip block="Wifi Get IP"
+    //% group="Wifi" weight=49
+    export function newland_get_ip() {
+      // serial.writeLine(`K54`)
+      let str = `K54`
+      asyncWrite(str, 54)
+    }*/
 
-/*  //% blockId=newland_ip_onread block="on IP Data"
-  //% group="Wifi" weight=48 draggableParameters=reporter
-  export function newland_ip_onread(
-    handler: (ip: string) => void
-  ) {
-    ipEvt = handler
-  }*/
+  /*  //% blockId=newland_ip_onread block="on IP Data"
+    //% group="Wifi" weight=48 draggableParameters=reporter
+    export function newland_ip_onread(
+      handler: (ip: string) => void
+    ) {
+      ipEvt = handler
+    }*/
 
-/*  //% blockId=newland_gettime block="Newland get time"
-  //% group="Wifi" weight=47
-  export function newland_gettime(): Array<string> {
-    asyncWrite(`K56`, 56)
-    return lastCmd
-  }*/
+  /*  //% blockId=newland_gettime block="Newland get time"
+    //% group="Wifi" weight=47
+    export function newland_gettime(): Array<string> {
+      asyncWrite(`K56`, 56)
+      return lastCmd
+    }*/
 
   /**
    * @param host Mqtt host; eg: iot.kittenbot.cn
@@ -542,65 +545,65 @@ namespace newland {
    * @param user Username; eg: user
    * @param pass Password; eg: pass
    */
-/*  //% blockId=newland_mqtt_host block="Mqtt Host %host| clientID%cid||Port%port User%user Pass%pass"
-  //% group="Wifi" weight=46
-  export function newland_mqtt_host(
-    host: string,
-    cid: string,
-    port: number = 1883,
-    user: string = null,
-    pass: string = null
-  ) {
-    if (user && pass) {
-      serial.writeLine(`K51 ${host} ${cid} ${port} ${user} ${pass}`)
-    } else {
-      serial.writeLine(`K51 ${host} ${cid} ${port}`)
-    }
-  }*/
+  /*  //% blockId=newland_mqtt_host block="Mqtt Host %host| clientID%cid||Port%port User%user Pass%pass"
+    //% group="Wifi" weight=46
+    export function newland_mqtt_host(
+      host: string,
+      cid: string,
+      port: number = 1883,
+      user: string = null,
+      pass: string = null
+    ) {
+      if (user && pass) {
+        serial.writeLine(`K51 ${host} ${cid} ${port} ${user} ${pass}`)
+      } else {
+        serial.writeLine(`K51 ${host} ${cid} ${port}`)
+      }
+    }*/
 
   /**
    * @param topic Topic to subscribe; eg: /topic
    */
-/*
-  //% blockId=newland_mqtt_sub block="Mqtt Subscribe %topic"
-  //% group="Wifi" weight=45
-  export function newland_mqtt_sub(topic: string) {
-    serial.writeLine(`K52 ${topic}`)
-  }
-*/
+  /*
+    //% blockId=newland_mqtt_sub block="Mqtt Subscribe %topic"
+    //% group="Wifi" weight=45
+    export function newland_mqtt_sub(topic: string) {
+      serial.writeLine(`K52 ${topic}`)
+    }
+  */
 
   /**
    * @param topic Topic to publish; eg: /topic
    * @param data Data to publish; eg: hello
    */
-/*
-  //% blockId=newland_mqtt_pub block="Mqtt Publish %topic %data"
-  //% group="Wifi" weight=44
-  export function newland_mqtt_pub(topic: string, data: string) {
-    serial.writeLine(`K53 ${topic} ${data}`)
-  }
-*/
+  /*
+    //% blockId=newland_mqtt_pub block="Mqtt Publish %topic %data"
+    //% group="Wifi" weight=44
+    export function newland_mqtt_pub(topic: string, data: string) {
+      serial.writeLine(`K53 ${topic} ${data}`)
+    }
+  */
 
   /**
    * @param topic Mqtt Read; eg: /topic
    */
-/*  //% blockId=newland_mqtt_read block="Mqtt Read %topic"
-  //% group="Wifi" weight=43
-  export function newland_mqtt_read(topic: string) {
-    topic = topic || ''
-    let str = `K55 ${topic}`
-    serial.writeLine(str)
-    // asyncWrite(str, 55)
+  /*  //% blockId=newland_mqtt_read block="Mqtt Read %topic"
+    //% group="Wifi" weight=43
+    export function newland_mqtt_read(topic: string) {
+      topic = topic || ''
+      let str = `K55 ${topic}`
+      serial.writeLine(str)
+      // asyncWrite(str, 55)
 
-  }*/
+    }*/
 
-/*  //% blockId=newland_mqtt_onread block="on Mqtt Data"
-  //% group="Wifi" weight=42 draggableParameters=reporter
-  export function newland_mqtt_onread(
-    handler: (data: string, topic: string) => void
-  ) {
-    mqttDataEvt = handler
-  }*/
+  /*  //% blockId=newland_mqtt_onread block="on Mqtt Data"
+    //% group="Wifi" weight=42 draggableParameters=reporter
+    export function newland_mqtt_onread(
+      handler: (data: string, topic: string) => void
+    ) {
+      mqttDataEvt = handler
+    }*/
 
 
   /**
@@ -706,13 +709,13 @@ namespace newland {
     // asyncWrite(str, 77)
   }*/
 
- /* //% blockId=newland_cloud_onfindface block="on Find Face"
-  //% group="CloudAI" weight=26 draggableParameters=reporter blockGap=40
-  export function newland_cloud_onfindface(
-    handler: (name: string, confidence: number) => void
-  ) {
-    facefoundEvt = handler
-  }*/
+  /* //% blockId=newland_cloud_onfindface block="on Find Face"
+   //% group="CloudAI" weight=26 draggableParameters=reporter blockGap=40
+   export function newland_cloud_onfindface(
+     handler: (name: string, confidence: number) => void
+   ) {
+     facefoundEvt = handler
+   }*/
 
   /**
    * @param TXT text to speech; eg: hello world
