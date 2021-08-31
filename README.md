@@ -2,7 +2,6 @@
 > Open this page at [https://.github.io//](https://.github.io//)
 
 pxt-newland
-
  ![](newland.png)
 ## Use as Extension
 
