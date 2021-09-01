@@ -519,7 +519,7 @@ namespace newland {
 
   //% blockId=newland_loadobjectdetection block="Newland Load Object detectio"
   //% group="AI" weight=53
-  export function newland_loadObjectDetection() {
+  export function newland_loadobjectdetection() {
     let str = `K50`
     serial.writeLine(str)
   }
