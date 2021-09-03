@@ -487,14 +487,14 @@ namespace newland {
   }
 
   //% blockId=newland_loadyoloface block="Newland Load Face yolo"
-  //% group="Face" weight=60
+  //% group="AI" weight=60
   export function newland_loadyoloface() {
     let str = `K30`
     serial.writeLine(str)
   }
 
   //% blockId=newland_facedetect block="Newland face detect"
-  //% group="Face" weight=59
+  //% group="AI" weight=59
   export function newland_facedetect() {
     let str = `K31`
     // serial.writeLine(str)
@@ -504,7 +504,7 @@ namespace newland {
 
   //改为人脸数量
   //% blockId=newland_facecount block="Newland face number"
-  //% group="Face" weight=57 blockGap=40
+  //% group="AI" weight=57 blockGap=40
   export function newland_facecount(): number {
     let str = `K32`
     asyncWrite(`K32`, 32)
@@ -512,7 +512,7 @@ namespace newland {
   }
 
   //% blockId=newland_onfindface block="on Find Face"
-  //% group="Face" weight=58 draggableParameters=reporter blockGap=40
+  //% group="AI" weight=58 draggableParameters=reporter blockGap=40
   export function newland_onfindface(handler: (x: number, y: number) => void) {
     facedetEvt = handler
   }
