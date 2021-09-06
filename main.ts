@@ -263,7 +263,7 @@ namespace newland {
    * @param d delay; eg: 1000
    */
   //% blockId=newland_print block="Newland print %t X %x Y %y||delay %d ms"
-  //% x.min=0 x.max=240
+  //% x.min=0 x.max=320
   //% y.min=0 y.max=240
   //% group="Basic" weight=97
   export function newland_print(t: string, x: number, y: number, d: number = 1000): void {
