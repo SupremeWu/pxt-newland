@@ -374,20 +374,20 @@ namespace newland {
   /**
    * @param th threshold; eg: 6000
    */
-  //% blockId=newland_track_rect block="Newland track rectangle %th"
-  //% group="Graphic" weight=78
-  export function newland_track_rect(th: number): void {
-    let str = `K11 ${th}`
-    serial.writeLine(str)
-  }
+  /*//% blockId=newland_track_rect block="Newland track rectangle %th"
+   //% group="Graphic" weight=78
+   export function newland_track_rect(th: number): void {
+     let str = `K11 ${th}`
+     serial.writeLine(str)
+   }
 
-  //% blockId=newland_onrecttrack block="on Find Rectangle"
-  //% group="Graphic" weight=77 draggableParameters=reporter blockGap=40
-  export function newland_onrecttrack(
-      handler: (x: number, y: number, w: number, h: number) => void
-  ) {
-    rectEvt = handler
-  }
+   //% blockId=newland_onrecttrack block="on Find Rectangle"
+   //% group="Graphic" weight=77 draggableParameters=reporter blockGap=40
+   export function newland_onrecttrack(
+       handler: (x: number, y: number, w: number, h: number) => void
+   ) {
+     rectEvt = handler
+   } */
 
   /**
    * @param key color key; eg: red
@@ -436,18 +436,18 @@ namespace newland {
     colorblobEvt = handler
   }
 
-  /*//% blockId=newland_qrcode block="Newland QR code"
+  //% blockId=newland_qrcode block="Newland QR code"
   //% group="Tag/Code" weight=70
   export function newland_qrcode() {
     let str = `K20`
     serial.writeLine(str)
-  }*/
+  }
 
-  /*//% blockId=newland_onqrcode block="on QR code"
+  //% blockId=newland_onqrcode block="on QR code"
   //% group="Tag/Code" weight=69 draggableParameters=reporter blockGap=40
   export function newland_onqrcode(handler: (link: string) => void) {
     qrcodeEvt = handler
-  }*/
+  }
 
   //% blockId=newland_barcode block="Newland BAR code"
   //% group="Tag/Code" weight=68
@@ -462,110 +462,110 @@ namespace newland {
     barcodeEvt = handler
   }
 
-  //% blockId=newland_apriltag block="Newland April Tag"
-  //% group="Tag/Code" weight=66
-  export function newland_apriltag() {
-    let str = `K23`
-    serial.writeLine(str)
-  }
+  /* //% blockId=newland_apriltag block="Newland April Tag"
+ //% group="Tag/Code" weight=66
+ export function newland_apriltag() {
+   let str = `K23`
+   serial.writeLine(str)
+ }
 
-  //% blockId=newland_onapriltag block="on AprilTag"
-  //% group="Tag/Code" weight=65 draggableParameters=reporter blockGap=40
-  export function newland_onapriltag(
-      handler: (
-          id: string,
-          x: number,
-          y: number,
-          w: number,
-          h: number,
-          tX: number,
-          tY: number,
-          tZ: number
-      ) => void
-  ) {
-    apriltagEvt = handler
-  }
+ //% blockId=newland_onapriltag block="on AprilTag"
+ //% group="Tag/Code" weight=65 draggableParameters=reporter blockGap=40
+ export function newland_onapriltag(
+     handler: (
+         id: string,
+         x: number,
+         y: number,
+         w: number,
+         h: number,
+         tX: number,
+         tY: number,
+         tZ: number
+     ) => void
+ ) {
+   apriltagEvt = handler
+ }*/
 
-  //% blockId=newland_loadyoloface block="Newland Load Face yolo"
-  //% group="AI" weight=60
-  export function newland_loadyoloface() {
-    let str = `K30`
-    serial.writeLine(str)
-  }
+ //% blockId=newland_loadyoloface block="Newland Load Face yolo"
+ //% group="AI" weight=60
+ export function newland_loadyoloface() {
+   let str = `K30`
+   serial.writeLine(str)
+ }
 
-  //% blockId=newland_facedetect block="Newland face detect"
-  //% group="AI" weight=59
-  export function newland_facedetect() {
-    let str = `K31`
-    // serial.writeLine(str)
-    // basic.pause(200)
-    asyncWrite(str, 31)
-  }
+ //% blockId=newland_facedetect block="Newland face detect"
+ //% group="AI" weight=59
+ export function newland_facedetect() {
+   let str = `K31`
+   // serial.writeLine(str)
+   // basic.pause(200)
+   asyncWrite(str, 31)
+ }
 
-  //改为人脸数量
-  //% blockId=newland_facecount block="Newland face number"
-  //% group="AI" weight=57 blockGap=40
-  export function newland_facecount(): number {
-    let str = `K32`
-    asyncWrite(`K32`, 32)
-    return faceNum
-  }
+ //改为人脸数量
+ //% blockId=newland_facecount block="Newland face number"
+ //% group="AI" weight=57 blockGap=40
+ export function newland_facecount(): number {
+   let str = `K32`
+   asyncWrite(`K32`, 32)
+   return faceNum
+ }
 
-  //% blockId=newland_onfindface block="on Find Face"
-  //% group="AI" weight=58 draggableParameters=reporter blockGap=40
-  export function newland_onfindface(handler: (x: number, y: number) => void) {
-    facedetEvt = handler
-  }
+ //% blockId=newland_onfindface block="on Find Face"
+ //% group="AI" weight=58 draggableParameters=reporter blockGap=40
+ export function newland_onfindface(handler: (x: number, y: number) => void) {
+   facedetEvt = handler
+ }
 
-  //% blockId=newland_loadobjectdetection block="Newland Load Object detectio"
-  //% group="AI" weight=53
-  export function newland_loadobjectdetection() {
-    let str = `K50`
-    serial.writeLine(str)
-  }
+ //% blockId=newland_loadobjectdetection block="Newland Load Object detectio"
+ //% group="AI" weight=53
+ export function newland_loadobjectdetection() {
+   let str = `K50`
+   serial.writeLine(str)
+ }
 
-  //% blockId=newland_detection block="Newland object detectio"
-  //% group="AI" weight=52
-  export function newland_detection() {
-    let str = `K51`
-    // serial.writeLine(str)
-    // basic.pause(200)
-    asyncWrite(str, 51)
-  }
+ //% blockId=newland_detection block="Newland object detectio"
+ //% group="AI" weight=52
+ export function newland_detection() {
+   let str = `K51`
+   // serial.writeLine(str)
+   // basic.pause(200)
+   asyncWrite(str, 51)
+ }
 
-  //% blockId=newland_detectionname block="on detectio Name"
-  //% group="AI" weight=51 draggableParameters=reporter blockGap=40
-  export function newland_detectionname(handler: (x: number, y: number) => void) {
-    objectdetEvt = handler
-  }
+ //% blockId=newland_detectionname block="on detectio Name"
+ //% group="AI" weight=51 draggableParameters=reporter blockGap=40
+ export function newland_detectionname(handler: (x: number, y: number) => void) {
+   objectdetEvt = handler
+ }
 
 
-  //% blockId=newland_loaddigitalrecognition block="Newland  load digital recognition detectio"
-  //% group="AI" weight=63
-  export function newland_loaddigitalrecognition() {
-    let str = `K60`
-    serial.writeLine(str)
-  }
+ //% blockId=newland_loaddigitalrecognition block="Newland  load digital recognition detectio"
+ //% group="AI" weight=63
+ export function newland_loaddigitalrecognition() {
+   let str = `K60`
+   serial.writeLine(str)
+ }
 
-  //% blockId=newland_digitalrecognition block="Newland digital recognition"
-  //% group="AI" weight=62
-  export function newland_digitalrecognition() {
-    let str = `K61`
-    // serial.writeLine(str)
-    // basic.pause(200)
-    asyncWrite(str, 61)
-  }
+ //% blockId=newland_digitalrecognition block="Newland digital recognition"
+ //% group="AI" weight=62
+ export function newland_digitalrecognition() {
+   let str = `K61`
+   // serial.writeLine(str)
+   // basic.pause(200)
+   asyncWrite(str, 61)
+ }
 
-  //% blockId=newland_digitalid block="newland digitalid Value"
-  //% group="AI" weight=61 draggableParameters=reporter blockGap=40
-  export function newland_digitalid(handler: (x: number) => void) {
-    carddetEvt = handler
-  }
+ //% blockId=newland_digitalid block="newland digitalid Value"
+ //% group="AI" weight=61 draggableParameters=reporter blockGap=40
+ export function newland_digitalid(handler: (x: number) => void) {
+   carddetEvt = handler
+ }
 
-  /**
-   * @param ssid SSID; eg: ssid
-   * @param pass PASSWORD; eg: password
-   */
+ /**
+  * @param ssid SSID; eg: ssid
+  * @param pass PASSWORD; eg: password
+  */
   /*  //% blockId=newland_join_ap block="Join Ap %ssid %pass"
     //% group="Wifi" weight=50
     export function newland_join_ap(ssid: string, pass: string) {
@@ -800,30 +800,29 @@ namespace newland {
     serial.writeLine(str)
   }*/
 
-  // /**
-  //  * @param txt string to display; eg: 你好世界
-  //  */
-  // //% blockId=newland_print_unicode block="Print UNICODE X %x Y %y %txt||delay %delay ms"
-  // //% x.min=0 x.max=240
-  // //% y.min=0 y.max=240
-  // //% group="Basic" weight=100
-  // //% advanced=true
-  // export function newland_print_unicode(
-  //   x: number,
-  //   y: number,
-  //   txt: string,
-  //   delay: number = 1000
-  // ): void {
-  //   let s: string = '${';
-  //   for (let i=0;i<txt.length;i++){
-  //     s += txt.charCodeAt(i)
-  //     if (i != (txt.length-1)) s += ','
-  //   }
-  //   s += '}'
-
-  //   let str = `K5 ${x} ${y} ${delay} ${s}`
-  //   serial.writeLine(str)
-  // }
+  /**
+   * @param txt string to display; eg: 你好世界
+   */
+  //% blockId=newland_print_unicode block="Print UNICODE X %x Y %y %txt||delay %delay ms"
+  //% x.min=0 x.max=320
+  //% y.min=0 y.max=240
+  //% group="Basic" weight=100
+  //% advanced=true
+  export function newland_print_unicode(
+    x: number,
+    y: number,
+    txt: string,
+    delay: number = 1000
+  ): void {
+      let s: string = '${';
+      for (let i=0;i<txt.length;i++){
+        s += txt.charCodeAt(i)
+        if (i != (txt.length-1)) s += ','
+      }
+      s += '}'
+      let str = `K5 ${x} ${y} ${delay} ${s}`
+      serial.writeLine(str)
+  }
 
 
   /**
