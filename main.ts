@@ -227,8 +227,8 @@ namespace newland {
 
   /**
    * init serial port
-   * @param tx Tx pin; eg: SerialPin.P1
-   * @param rx Rx pin; eg: SerialPin.P2
+   * @param tx Tx pin; eg: SerialPin.P13
+   * @param rx Rx pin; eg: SerialPin.P14
    */
   //% blockId=newland_init block="Newland init|Tx pin %tx|Rx pin %rx"
   //% group="Basic" weight=100
