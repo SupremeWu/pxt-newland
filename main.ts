@@ -524,14 +524,18 @@ namespace newland {
    serial.writeLine(str)
  }
 
- //% blockId=newland_detection block="Newland object detectio"
+  /**
+   * @param th threshold; eg: 0.5
+   */
+ //% blockId=newland_detection block="Newland object detectio %th"
  //% group="AI" weight=52
- export function newland_detection() {
-   let str = `K51`
+ export function newland_detection(th: number): void  {
+   let str = `K51 ${th}`
    // serial.writeLine(str)
    // basic.pause(200)
-   asyncWrite(str, 51)
+    asyncWrite(str, 51)
  }
+
 
  //% blockId=newland_detectionname block="on detectio Name"
  //% group="AI" weight=51 draggableParameters=reporter blockGap=40
@@ -547,13 +551,16 @@ namespace newland {
    serial.writeLine(str)
  }
 
- //% blockId=newland_digitalrecognition block="Newland digital recognition"
+  /**
+   * @param th threshold; eg: 0.5
+   */
+ //% blockId=newland_digitalrecognition block="Newland digital recognition %th"
  //% group="AI" weight=62
- export function newland_digitalrecognition() {
-   let str = `K61`
+ export function newland_digitalrecognition(th: number) {
+   let str = `K61 ${th}`
    // serial.writeLine(str)
    // basic.pause(200)
-   asyncWrite(str, 61)
+    asyncWrite(str, 61)
  }
 
  //% blockId=newland_digitalid block="newland digitalid Value"
