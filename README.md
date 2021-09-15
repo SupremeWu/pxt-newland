@@ -7,7 +7,6 @@ pxt-newland
 
 ## Use as Extension
 This repository can be added as an **extension** in MakeCode.
-
 * open []()
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
