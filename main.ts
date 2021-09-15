@@ -487,93 +487,93 @@ namespace newland {
    apriltagEvt = handler
  }*/
 
- //% blockId=newland_loadyoloface block="Newland Load Face yolo"
- //% group="AI" weight=60
- export function newland_loadyoloface() {
-   let str = `K30`
-   serial.writeLine(str)
- }
+  //% blockId=newland_loadyoloface block="Newland Load Face yolo"
+  //% group="AI" weight=60
+  export function newland_loadyoloface() {
+    let str = `K30`
+    serial.writeLine(str)
+  }
 
- //% blockId=newland_facedetect block="Newland face detect"
- //% group="AI" weight=59
- export function newland_facedetect() {
-   let str = `K31`
-   // serial.writeLine(str)
-   // basic.pause(200)
-   asyncWrite(str, 31)
- }
+  //% blockId=newland_facedetect block="Newland face detect"
+  //% group="AI" weight=59
+  export function newland_facedetect() {
+    let str = `K31`
+    // serial.writeLine(str)
+    // basic.pause(200)
+    asyncWrite(str, 31)
+  }
 
- //改为人脸数量
- //% blockId=newland_facecount block="Newland face number"
- //% group="AI" weight=57 blockGap=40
- export function newland_facecount(): number {
-   let str = `K32`
-   asyncWrite(`K32`, 32)
-   return faceNum
- }
+  //改为人脸数量
+  //% blockId=newland_facecount block="Newland face number"
+  //% group="AI" weight=57 blockGap=40
+  export function newland_facecount(): number {
+    let str = `K32`
+    asyncWrite(`K32`, 32)
+    return faceNum
+  }
 
- //% blockId=newland_onfindface block="on Find Face"
- //% group="AI" weight=58 draggableParameters=reporter blockGap=40
- export function newland_onfindface(handler: (x: number, y: number) => void) {
-   facedetEvt = handler
- }
+  //% blockId=newland_onfindface block="on Find Face"
+  //% group="AI" weight=58 draggableParameters=reporter blockGap=40
+  export function newland_onfindface(handler: (x: number, y: number) => void) {
+    facedetEvt = handler
+  }
 
- //% blockId=newland_loadobjectdetection block="Newland Load Object detectio"
- //% group="AI" weight=53
- export function newland_loadobjectdetection() {
-   let str = `K50`
-   serial.writeLine(str)
- }
+  //% blockId=newland_loadobjectdetection block="Newland Load Object detectio"
+  //% group="AI" weight=53
+  export function newland_loadobjectdetection() {
+    let str = `K50`
+    serial.writeLine(str)
+  }
 
   /**
    * @param th threshold; eg: 0.5
    */
- //% blockId=newland_detection block="Newland object detectio %th"
- //% group="AI" weight=52
- export function newland_detection(th: number): void  {
-   let str = `K51 ${th}`
-   // serial.writeLine(str)
-   // basic.pause(200)
+  //% blockId=newland_detection block="Newland object detectio %th"
+  //% group="AI" weight=52
+  export function newland_detection(th: number): void {
+    let str = `K51 ${th}`
+    // serial.writeLine(str)
+    // basic.pause(200)
     asyncWrite(str, 51)
- }
+  }
 
 
- //% blockId=newland_detectionname block="on detectio Name"
- //% group="AI" weight=51 draggableParameters=reporter blockGap=40
- export function newland_detectionname(handler: (x: number, y: number) => void) {
-   objectdetEvt = handler
- }
+  //% blockId=newland_detectionname block="on detectio Name"
+  //% group="AI" weight=51 draggableParameters=reporter blockGap=40
+  export function newland_detectionname(handler: (x: number, y: number) => void) {
+    objectdetEvt = handler
+  }
 
 
- //% blockId=newland_loaddigitalrecognition block="Newland  load digital recognition detectio"
- //% group="AI" weight=63
- export function newland_loaddigitalrecognition() {
-   let str = `K60`
-   serial.writeLine(str)
- }
+  //% blockId=newland_loaddigitalrecognition block="Newland  load digital recognition detectio"
+  //% group="AI" weight=63
+  export function newland_loaddigitalrecognition() {
+    let str = `K60`
+    serial.writeLine(str)
+  }
 
   /**
    * @param th threshold; eg: 0.5
    */
- //% blockId=newland_digitalrecognition block="Newland digital recognition %th"
- //% group="AI" weight=62
- export function newland_digitalrecognition(th: number) {
-   let str = `K61 ${th}`
-   // serial.writeLine(str)
-   // basic.pause(200)
+  //% blockId=newland_digitalrecognition block="Newland digital recognition %th"
+  //% group="AI" weight=62
+  export function newland_digitalrecognition(th: number) {
+    let str = `K61 ${th}`
+    // serial.writeLine(str)
+    // basic.pause(200)
     asyncWrite(str, 61)
- }
+  }
 
- //% blockId=newland_digitalid block="newland digitalid Value"
- //% group="AI" weight=61 draggableParameters=reporter blockGap=40
- export function newland_digitalid(handler: (x: number) => void) {
-   carddetEvt = handler
- }
+  //% blockId=newland_digitalid block="newland digitalid Value"
+  //% group="AI" weight=61 draggableParameters=reporter blockGap=40
+  export function newland_digitalid(handler: (x: number) => void) {
+    carddetEvt = handler
+  }
 
- /**
-  * @param ssid SSID; eg: ssid
-  * @param pass PASSWORD; eg: password
-  */
+  /**
+   * @param ssid SSID; eg: ssid
+   * @param pass PASSWORD; eg: password
+   */
   /*  //% blockId=newland_join_ap block="Join Ap %ssid %pass"
     //% group="Wifi" weight=50
     export function newland_join_ap(ssid: string, pass: string) {
@@ -817,19 +817,19 @@ namespace newland {
   //% group="Basic" weight=100
   //% advanced=true
   export function newland_print_unicode(
-    x: number,
-    y: number,
-    txt: string,
-    delay: number = 1000
+      x: number,
+      y: number,
+      txt: string,
+      delay: number = 1000
   ): void {
-      let s: string = '${';
-      for (let i=0;i<txt.length;i++){
-        s += txt.charCodeAt(i)
-        if (i != (txt.length-1)) s += ','
-      }
-      s += '}'
-      let str = `K5 ${x} ${y} ${delay} ${s}`
-      serial.writeLine(str)
+    let s: string = '${';
+    for (let i = 0; i < txt.length; i++) {
+      s += txt.charCodeAt(i)
+      if (i != (txt.length - 1)) s += ','
+    }
+    s += '}'
+    let str = `K5 ${x} ${y} ${delay} ${s}`
+    serial.writeLine(str)
   }
 
 
