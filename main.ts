@@ -357,6 +357,7 @@ namespace newland {
    */
   //% blockId=newland_track_circle block="Newland track circle threshold%th"
   //% group="Graphic" weight=80
+  //% th.min=1000 th.max=5000
   export function newland_track_circle(th: number): void {
     let str = `K10 ${th}`
     serial.writeLine(str)
