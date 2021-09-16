@@ -13,7 +13,7 @@ namespace newland {
   type EvtCardNum = (num: number) => void
   type Evtxye = (x: number, y: number, e: number) => void
   type Evtxy = (x: number, y: number) => void
-  type Evtxyobj = (x: number, y: number) => void
+  type Evtxyobj = (txt: string, x: number, y: number) => void
   type Evtxywh = (x: number, y: number, w: number, h: number) => void
   type Evtxyr = (x: number, y: number, r: number) => void
   type Evtpp = (x1: number, y1: number, x2: number, y2: number) => void
@@ -184,7 +184,7 @@ namespace newland {
         faceNum = parseInt(b[1])
       } else if (cmd == 51) {
         if (objectdetEvt && b[1]) {
-          objectdetEvt(parseInt(b[1]), parseInt(b[2]))
+          objectdetEvt(b[1], parseInt(b[2]), parseInt(b[3]))
         }
       } else if (cmd == 54) {
         // ip
@@ -540,7 +540,7 @@ namespace newland {
 
   //% blockId=newland_detectionname block="on detectio Name"
   //% group="AI" weight=51 draggableParameters=reporter blockGap=40
-  export function newland_detectionname(handler: (x: number, y: number) => void) {
+  export function newland_detectionname(handler: (txt: string, x: number, y: number) => void) {
     objectdetEvt = handler
   }
 
