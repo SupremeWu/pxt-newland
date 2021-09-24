@@ -13,6 +13,7 @@ namespace newland {
   type EvtCardNum = (num: number) => void
   type Evtxye = (x: number, y: number, e: number) => void
   type Evtxy = (x: number, y: number) => void
+  type EvtFaceNum = (x: number) => void
   type Evtxyobj = (txt: string, x: number, y: number) => void
   type Evtxywh = (x: number, y: number, w: number, h: number) => void
   type Evtxyr = (x: number, y: number, r: number) => void
@@ -50,6 +51,7 @@ namespace newland {
   let barcodeEvt: Evttxt = null
   let apriltagEvt: Evtsxy = null
   let facedetEvt: Evtxy = null
+  let facenumEvt: EvtFaceNum = null
   let objectdetEvt: Evtxyobj = null
   let carddetEvt: EvtCardNum = null
   let ipEvt: Evttxt = null
@@ -181,7 +183,10 @@ namespace newland {
         }
       } else if (cmd == 32) {
         // face number
-        faceNum = parseInt(b[1])
+        if (facenumEvt && b[1]) {
+          facenumEvt(parseInt(b[1]))
+        }
+      //  faceNum = parseInt(b[1])
       } else if (cmd == 51) {
         if (objectdetEvt && b[1]) {
           objectdetEvt(b[1], parseInt(b[2]), parseInt(b[3]))
@@ -505,11 +510,12 @@ namespace newland {
 
   //改为人脸数量
   //% blockId=newland_facecount block="Newland face number"
-  //% group="AI" weight=57 blockGap=40
-  export function newland_facecount(): number {
-    let str = `K32`
-    asyncWrite(`K32`, 32)
-    return faceNum
+  //% group="AI" weight=57 draggableParameters=reporter blockGap=40
+  export function newland_facecount(handler: (x: number) => void) {
+    // let str = `K32`
+    // asyncWrite(`K32`, 32)
+    // return faceNum
+    facenumEvt = handler
   }
 
   //% blockId=newland_onfindface block="on Find Face"
