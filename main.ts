@@ -508,12 +508,13 @@ namespace newland {
     asyncWrite(str, 31)
   }
 
+
   //改为人脸数量
   //% blockId=newland_facecount block="Newland face number"
   //% group="AI" weight=57 draggableParameters=reporter blockGap=40
   export function newland_facecount(handler: (x: number) => void) {
-    // let str = `K32`
-    // asyncWrite(`K32`, 32)
+    let str = `K32`
+    asyncWrite(`K32`, 32)
     // return faceNum
     facenumEvt = handler
   }
