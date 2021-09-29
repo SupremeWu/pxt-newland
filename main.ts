@@ -506,6 +506,8 @@ namespace newland {
     // serial.writeLine(str)
     // basic.pause(200)
     asyncWrite(str, 31)
+    let strOther = `K32`
+    asyncWrite(strOther, 32)
   }
 
 
@@ -513,8 +515,8 @@ namespace newland {
   //% blockId=newland_facecount block="Newland face number"
   //% group="AI" weight=57 draggableParameters=reporter blockGap=40
   export function newland_facecount(handler: (x: number) => void) {
-    let str = `K32`
-    asyncWrite(`K32`, 32)
+    // let str = `K32`
+    // asyncWrite(`K32`, 32)
     // return faceNum
     facenumEvt = handler
   }
