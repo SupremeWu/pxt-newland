@@ -506,6 +506,7 @@ namespace newland {
     // serial.writeLine(str)
     // basic.pause(200)
     asyncWrite(str, 31)
+    basic.pause(300)
     let strOther = `K32`
     asyncWrite(strOther, 32)
   }
