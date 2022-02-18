@@ -226,7 +226,7 @@ namespace newland {
 
   function asyncWrite(msg: string, evt: number): void {
     serial.writeLine(msg)
-    control.waitForEvent(EventBusSource.MES_BROADCAST_GENERAL_ID, 0x8900 + evt)
+    //control.waitForEvent(EventBusSource.MES_BROADCAST_GENERAL_ID, 0x8900 + evt)
 
   }
 
@@ -239,7 +239,7 @@ namespace newland {
   //% group="Basic" weight=100
   export function newland_init(tx: SerialPin, rx: SerialPin): void {
     serial.redirect(tx, rx, BaudRate.BaudRate115200)
-    basic.pause(100)
+    basic.pause(500)
     serial.setTxBufferSize(64)
     serial.setRxBufferSize(64)
     serial.readString()
@@ -272,7 +272,8 @@ namespace newland {
   //% y.min=0 y.max=240
   //% group="Basic" weight=97
   export function newland_print(t: string, x: number, y: number, d: number = 1000): void {
-    let str = `K4 ${x} ${y} ${d} ${t}`
+
+    let str = `K4 ${x} ${y} ${d} ${t}\n`
     serial.writeLine(str)
   }
 
